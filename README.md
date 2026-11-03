@@ -13,8 +13,6 @@
             --text-color: #333333;
             --border-color: #DDE5D6;
             --hover-color: #F0F4ED;
-            --alert-bg: #FFF3E0;
-            --alert-border: #FFE0B2;
         }
 
         body {
@@ -73,7 +71,14 @@
             font-size: 17px;
             font-weight: 600;
             color: var(--primary-color);
-            margin-bottom: 20px;
+            margin-bottom: 8px;
+        }
+
+        .question-hint {
+            font-size: 13px;
+            color: #777;
+            margin-bottom: 18px;
+            font-style: italic;
         }
 
         .options {
@@ -92,7 +97,7 @@
             transition: all 0.2s ease;
             display: flex;
             align-items: flex-start;
-            gap: 10px;
+            gap: 12px;
         }
 
         .option-label:hover {
@@ -100,9 +105,12 @@
             border-color: var(--primary-color);
         }
 
-        .option-label input {
+        .option-label input[type="checkbox"] {
             margin-top: 3px;
+            width: 17px;
+            height: 17px;
             accent-color: var(--primary-color);
+            cursor: pointer;
         }
 
         .nav-btn {
@@ -128,15 +136,15 @@
 
         .results h2 {
             color: var(--primary-color);
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             text-align: center;
         }
 
         .result-block {
             background: var(--bg-color);
-            padding: 20px;
+            padding: 22px;
             border-radius: 12px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             border-left: 5px solid var(--primary-color);
         }
 
@@ -144,6 +152,21 @@
             margin-top: 0;
             color: var(--primary-color);
             font-size: 18px;
+            margin-bottom: 12px;
+        }
+
+        .coaching-adaptation-box {
+            background: #FFFFFF;
+            border: 1px dashed var(--primary-color);
+            padding: 18px;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        .coaching-adaptation-box h4 {
+            margin: 0 0 8px 0;
+            color: var(--primary-color);
+            font-size: 15px;
         }
 
         .disclaimer {
@@ -158,10 +181,10 @@
         }
 
         .cta-box {
-            margin-top: 20px;
+            margin-top: 25px;
             text-align: center;
             background: var(--accent-green);
-            padding: 20px;
+            padding: 22px;
             border-radius: 12px;
         }
 
@@ -175,14 +198,14 @@
             cursor: pointer;
             text-decoration: none;
             display: inline-block;
-            margin-top: 10px;
+            margin-top: 12px;
             font-weight: 600;
         }
 
         .progress {
             font-size: 12px;
             color: #888;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
@@ -215,13 +238,14 @@
         <div class="question-card active" data-step="1">
             <div class="progress">Питання 1 з 7</div>
             <div class="question-title">1. Що зараз відбувається у вашому житті?</div>
-            <div class="options">
-                <label class="option-label"><input type="radio" name="q1" value="coaching"> Я хочу змін, маю бажання або ціль, але не розумію, як рухатися далі.</label>
-                <label class="option-label"><input type="radio" name="q1" value="therapy"> Мене турбують переживання, емоційний біль або досвід, який продовжує впливати на мене.</label>
-                <label class="option-label" data-safety="psychiatry"><input type="radio" name="q1" value="psychiatry"> Я помічаю зміни психічного стану, які суттєво впливають на моє життя, і хочу оцінити потребу в медичній допомозі.</label>
-                <label class="option-label"><input type="radio" name="q1" value="mentoring"> Я хочу розвиватися у певній сфері, використовуючи досвід людини, яка вже пройшла подібний шлях.</label>
-                <label class="option-label"><input type="radio" name="q1" value="consulting"> Я зіткнувся/-лася з конкретною проблемою і потребую експертного аналізу та рекомендацій.</label>
-                <label class="option-label"><input type="radio" name="q1" value="training"> Я хочу опанувати конкретну навичку або покращити якість її виконання.</label>
+            <div class="question-hint">Оберіть один або декілька варіантів, які вас описують:</div>
+            <div class="options" id="options-q1">
+                <label class="option-label"><input type="checkbox" name="q1" value="therapy"> Мене турбують переживання, емоційний біль або досвід, який продовжує впливати на мене.</label>
+                <label class="option-label"><input type="checkbox" name="q1" value="coaching"> Я хочу змін, маю бажання або ціль, але не розумію, як рухатися далі.</label>
+                <label class="option-label"><input type="checkbox" name="q1" value="mentoring"> Я хочу розвиватися у певній сфері, використовуючи досвід людини, яка вже пройшла подібний шлях.</label>
+                <label class="option-label"><input type="checkbox" name="q1" value="psychiatry"> Я помічаю зміни психічного стану, які суттєво впливають на моє життя, і хочу оцінити потребу в медичній допомозі.</label>
+                <label class="option-label"><input type="checkbox" name="q1" value="training"> Я хочу опанувати конкретну навичку або покращити якість її виконання.</label>
+                <label class="option-label"><input type="checkbox" name="q1" value="consulting"> Я зіткнувся/-лася з конкретною проблемою і потребую експертного аналізу та рекомендацій.</label>
             </div>
             <button class="nav-btn" onclick="nextStep(1)">Далі ➔</button>
         </div>
@@ -230,13 +254,14 @@
         <div class="question-card" data-step="2">
             <div class="progress">Питання 2 з 7</div>
             <div class="question-title">2. Що найбільше заважає вам зараз?</div>
-            <div class="options">
-                <label class="option-label"><input type="radio" name="q2" value="coaching"> Невизначеність, складність із вибором, власними рішеннями або переходом до дій.</label>
-                <label class="option-label"><input type="radio" name="q2" value="therapy"> Страхи, тривожні переживання, болісний досвід або повторювані емоційні реакції.</label>
-                <label class="option-label" data-safety="psychiatry"><input type="radio" name="q2" value="psychiatry"> Стійкі або виражені зміни настрою, сну, мислення чи поведінки, які потребують оцінки лікаря.</label>
-                <label class="option-label"><input type="radio" name="q2" value="mentoring"> Брак досвіду, орієнтирів і розуміння, як діяти в конкретній сфері.</label>
-                <label class="option-label"><input type="radio" name="q2" value="consulting"> Відсутність фахового розуміння, як розв’язати конкретну проблему.</label>
-                <label class="option-label"><input type="radio" name="q2" value="training"> Брак практики, системності та відпрацьованих навичок.</label>
+            <div class="question-hint">Оберіть один або декілька варіантів:</div>
+            <div class="options" id="options-q2">
+                <label class="option-label"><input type="checkbox" name="q2" value="mentoring"> Брак досвіду, орієнтирів і розуміння, як діяти в конкретній сфері.</label>
+                <label class="option-label"><input type="checkbox" name="q2" value="psychiatry"> Стійкі або виражені зміни настрою, сну, мислення чи поведінки, які потребують оцінки лікаря.</label>
+                <label class="option-label"><input type="checkbox" name="q2" value="coaching"> Невизначеність, складність із вибором, власними рішеннями або переходом до дій.</label>
+                <label class="option-label"><input type="checkbox" name="q2" value="consulting"> Відсутність фахового розуміння, як розв’язати конкретну проблему.</label>
+                <label class="option-label"><input type="checkbox" name="q2" value="therapy"> Страхи, тривожні переживання, болісний досвід або повторювані емоційні реакції.</label>
+                <label class="option-label"><input type="checkbox" name="q2" value="training"> Брак практики, системності та відпрацьованих навичок.</label>
             </div>
             <button class="nav-btn" onclick="nextStep(2)">Далі ➔</button>
         </div>
@@ -245,13 +270,14 @@
         <div class="question-card" data-step="3">
             <div class="progress">Питання 3 з 7</div>
             <div class="question-title">3. Якого результату ви очікуєте від роботи зі спеціалістом?</div>
-            <div class="options">
-                <label class="option-label"><input type="radio" name="q3" value="coaching"> Краще зрозуміти себе, побачити нові можливості, сформувати власне рішення та діяти.</label>
-                <label class="option-label"><input type="radio" name="q3" value="therapy"> Розібратися з внутрішніми переживаннями, опрацювати психологічні труднощі.</label>
-                <label class="option-label" data-safety="psychiatry"><input type="radio" name="q3" value="psychiatry"> Отримати медичну оцінку стану, визначити можливі причини симптомів і тактику лікування.</label>
-                <label class="option-label"><input type="radio" name="q3" value="mentoring"> Отримати досвід, орієнтири та практичні рекомендації від людини з відповідною експертизою.</label>
-                <label class="option-label"><input type="radio" name="q3" value="consulting"> Отримати професійну оцінку ситуації та конкретні рішення або рекомендації.</label>
-                <label class="option-label"><input type="radio" name="q3" value="training"> Навчитися виконувати певні дії, закріпити знання та відпрацювати навички.</label>
+            <div class="question-hint">Оберіть один або декілька варіантів:</div>
+            <div class="options" id="options-q3">
+                <label class="option-label"><input type="checkbox" name="q3" value="consulting"> Отримати професійну оцінку ситуації та конкретні рішення або рекомендації.</label>
+                <label class="option-label"><input type="checkbox" name="q3" value="therapy"> Розібратися з внутрішніми переживаннями, опрацювати психологічні труднощі.</label>
+                <label class="option-label"><input type="checkbox" name="q3" value="training"> Навчитися виконувати певні дії, закріпити знання та відпрацювати навички.</label>
+                <label class="option-label"><input type="checkbox" name="q3" value="coaching"> Краще зрозуміти себе, побачити нові можливості, сформувати власне рішення та діяти.</label>
+                <label class="option-label"><input type="checkbox" name="q3" value="psychiatry"> Отримати медичну оцінку стану, визначити можливі причини симптомів і тактику лікування.</label>
+                <label class="option-label"><input type="checkbox" name="q3" value="mentoring"> Отримати досвід, орієнтири та практичні рекомендації від людини з відповідною експертизою.</label>
             </div>
             <button class="nav-btn" onclick="nextStep(3)">Далі ➔</button>
         </div>
@@ -260,13 +286,14 @@
         <div class="question-card" data-step="4">
             <div class="progress">Питання 4 з 7</div>
             <div class="question-title">4. Як ви почуваєтеся у повсякденному житті?</div>
-            <div class="options">
-                <label class="option-label"><input type="radio" name="q4" value="coaching"> Загалом функціоную, але відчуваю потребу в змінах і хочу рухатися до бажаного.</label>
-                <label class="option-label"><input type="radio" name="q4" value="therapy"> Мої переживання впливають на стосунки, самооцінку або повсякденне життя.</label>
-                <label class="option-label" data-safety="psychiatry"><input type="radio" name="q4" value="psychiatry"> Мій стан помітно порушує повсякденне функціонування, і я хочу звернутися до лікаря.</label>
-                <label class="option-label"><input type="radio" name="q4" value="mentoring"> Почуваюся достатньо добре, але хочу професійного розвитку.</label>
-                <label class="option-label"><input type="radio" name="q4" value="consulting"> Маю конкретну ситуацію, яку самостійно не можу вирішити через брак експертизи.</label>
-                <label class="option-label"><input type="radio" name="q4" value="training"> Маю сили та мотивацію навчатися, практикувати й покращувати результат.</label>
+            <div class="question-hint">Оберіть один або декілька варіантів:</div>
+            <div class="options" id="options-q4">
+                <label class="option-label"><input type="checkbox" name="q4" value="coaching"> Загалом функціоную, але відчуваю потребу в змінах і хочу рухатися до бажаного.</label>
+                <label class="option-label"><input type="checkbox" name="q4" value="mentoring"> Почуваюся достатньо добре, але хочу професійного розвитку.</label>
+                <label class="option-label"><input type="checkbox" name="q4" value="psychiatry"> Мій стан помітно порушує повсякденне функціонування, і я хочу звернутися до лікаря.</label>
+                <label class="option-label"><input type="checkbox" name="q4" value="therapy"> Мої переживання впливають на стосунки, самооцінку або повсякденне життя.</label>
+                <label class="option-label"><input type="checkbox" name="q4" value="training"> Маю сили та мотивацію навчатися, практикувати й покращувати результат.</label>
+                <label class="option-label"><input type="checkbox" name="q4" value="consulting"> Маю конкретну ситуацію, яку самостійно не можу вирішити через брак експертизи.</label>
             </div>
             <button class="nav-btn" onclick="nextStep(4)">Далі ➔</button>
         </div>
@@ -275,13 +302,14 @@
         <div class="question-card" data-step="5">
             <div class="progress">Питання 5 з 7</div>
             <div class="question-title">5. Який спосіб взаємодії вам найбільше потрібен?</div>
-            <div class="options">
-                <label class="option-label"><input type="radio" name="q5" value="coaching"> Партнерський діалог, запитання, дослідження власних переконань і пошук своїх відповідей.</label>
-                <label class="option-label"><input type="radio" name="q5" value="therapy"> Професійна психологічна робота з переживаннями, емоціями та минулим досвідом.</label>
-                <label class="option-label" data-safety="psychiatry"><input type="radio" name="q5" value="psychiatry"> Медична консультація, діагностична оцінка та визначення потреби в лікуванні.</label>
-                <label class="option-label"><input type="radio" name="q5" value="mentoring"> Обмін досвідом, розбір практичних ситуацій, поради та орієнтири.</label>
-                <label class="option-label"><input type="radio" name="q5" value="consulting"> Аналіз проблеми, пошук причин і розробка професійних рекомендацій.</label>
-                <label class="option-label"><input type="radio" name="q5" value="training"> Структуроване навчання, вправи, зворотний зв’язок і практика.</label>
+            <div class="question-hint">Оберіть один або декілька варіантів:</div>
+            <div class="options" id="options-q5">
+                <label class="option-label"><input type="checkbox" name="q5" value="training"> Структуроване навчання, вправи, зворотний зв’язок і практика.</label>
+                <label class="option-label"><input type="checkbox" name="q5" value="coaching"> Партнерський діалог, запитання, дослідження власних переконань і пошук своїх відповідей.</label>
+                <label class="option-label"><input type="checkbox" name="q5" value="consulting"> Аналіз проблеми, пошук причин і розробка професійних рекомендацій.</label>
+                <label class="option-label"><input type="checkbox" name="q5" value="therapy"> Професійна психологічна робота з переживаннями, емоціями та минулим досвідом.</label>
+                <label class="option-label"><input type="checkbox" name="q5" value="mentoring"> Обмін досвідом, розбір практичних ситуацій, поради та орієнтири.</label>
+                <label class="option-label"><input type="checkbox" name="q5" value="psychiatry"> Медична консультація, діагностична оцінка та визначення потреби в лікуванні.</label>
             </div>
             <button class="nav-btn" onclick="nextStep(5)">Далі ➔</button>
         </div>
@@ -290,13 +318,14 @@
         <div class="question-card" data-step="6">
             <div class="progress">Питання 6 з 7</div>
             <div class="question-title">6. На чому ви хочете зосередитися?</div>
-            <div class="options">
-                <label class="option-label"><input type="radio" name="q6" value="coaching"> На теперішньому та майбутньому: що я хочу змінити, що мені заважає і які рішення можу прийняти.</label>
-                <label class="option-label"><input type="radio" name="q6" value="therapy"> На тому, як минулий досвід і психологічні труднощі впливають на моє теперішнє життя.</label>
-                <label class="option-label" data-safety="psychiatry"><input type="radio" name="q6" value="psychiatry"> На симптомах, змінах психічного стану та можливих медичних причинах.</label>
-                <label class="option-label"><input type="radio" name="q6" value="mentoring"> На тому, як інші люди вирішували подібні завдання і що з їхнього досвіду можна застосувати.</label>
-                <label class="option-label"><input type="radio" name="q6" value="consulting"> На пошуку найефективнішого рішення конкретної професійної чи життєвої задачі.</label>
-                <label class="option-label"><input type="radio" name="q6" value="training"> На формуванні конкретних компетенцій та їх практичному застосуванні.</label>
+            <div class="question-hint">Оберіть один або декілька варіантів:</div>
+            <div class="options" id="options-q6">
+                <label class="option-label"><input type="checkbox" name="q6" value="psychiatry"> На симптомах, змінах психічного стану та можливих медичних причинах.</label>
+                <label class="option-label"><input type="checkbox" name="q6" value="coaching"> На теперішньому та майбутньому: що я хочу змінити, що мені заважає і які рішення можу прийняти.</label>
+                <label class="option-label"><input type="checkbox" name="q6" value="mentoring"> На тому, як інші люди вирішували подібні завдання і що з їхнього досвіду можна застосувати.</label>
+                <label class="option-label"><input type="checkbox" name="q6" value="therapy"> На тому, як минулий досвід і психологічні труднощі впливають на моє теперішнє життя.</label>
+                <label class="option-label"><input type="checkbox" name="q6" value="training"> На формуванні конкретних компетенцій та їх практичному застосуванні.</label>
+                <label class="option-label"><input type="checkbox" name="q6" value="consulting"> На пошуку найефективнішого рішення конкретної професійної чи життєвої задачі.</label>
             </div>
             <button class="nav-btn" onclick="nextStep(6)">Далі ➔</button>
         </div>
@@ -305,13 +334,14 @@
         <div class="question-card" data-step="7">
             <div class="progress">Питання 7 з 7</div>
             <div class="question-title">7. Що для вас буде ознакою успішної роботи?</div>
-            <div class="options">
-                <label class="option-label"><input type="radio" name="q7" value="coaching"> Я самостійно прийняв/-ла рішення, визначив/-ла напрям і почав/-ла діяти.</label>
-                <label class="option-label"><input type="radio" name="q7" value="therapy"> Я краще розумію себе, маю більше можливостей справлятися з переживаннями та психологічними труднощами.</label>
-                <label class="option-label" data-safety="psychiatry"><input type="radio" name="q7" value="psychiatry"> Я отримав/-ла фахову медичну оцінку та визначився/-лася з необхідною допомогою.</label>
-                <label class="option-label"><input type="radio" name="q7" value="mentoring"> Я використовую отриманий досвід і впевненіше дію у своїй сфері.</label>
-                <label class="option-label"><input type="radio" name="q7" value="consulting"> Я отримав/-ла обґрунтоване рішення або план вирішення конкретної проблеми.</label>
-                <label class="option-label"><input type="radio" name="q7" value="training"> Я опанував/-ла потрібну навичку та можу самостійно її застосовувати.</label>
+            <div class="question-hint">Оберіть один або декілька варіантів:</div>
+            <div class="options" id="options-q7">
+                <label class="option-label"><input type="checkbox" name="q7" value="coaching"> Я самостійно прийняв/-ла рішення, визначив/-ла напрям і почав/-ла діяти.</label>
+                <label class="option-label"><input type="checkbox" name="q7" value="training"> Я опанував/-ла потрібну навичку та можу самостійно її застосовувати.</label>
+                <label class="option-label"><input type="checkbox" name="q7" value="therapy"> Я краще розумію себе, маю більше можливостей справлятися з переживаннями та психологічними труднощами.</label>
+                <label class="option-label"><input type="checkbox" name="q7" value="consulting"> Я отримав/-ла обґрунтоване рішення або план вирішення конкретної проблеми.</label>
+                <label class="option-label"><input type="checkbox" name="q7" value="psychiatry"> Я отримав/-ла фахову медичну оцінку та визначився/-лася з необхідною допомогою.</label>
+                <label class="option-label"><input type="checkbox" name="q7" value="mentoring"> Я використовую отриманий досвід і впевненіше дію у своїй сфері.</label>
             </div>
             <button class="nav-btn" onclick="calculateResults()">Визначити найбільш відповідний інструмент</button>
         </div>
@@ -323,12 +353,12 @@
         <div id="results-content"></div>
 
         <div class="disclaimer">
-            ⚠️ <strong>Зверніть увагу:</strong> Цей тест носить інформаційний характер і не є медичним чи психотерапевтичним діагнозом. 
+            ⚠️ <strong>Зверніть увагу:</strong> Цей тест має інформаційно-орієнтовний характер і не є медичним діагнозом чи психотерапевтичним висновком.
         </div>
 
         <div class="cta-box">
-            <p style="margin: 0; font-weight: 500; color: var(--primary-color);">Хочете глибше розібрати свій запит та відчути коучинг на практиці?</p>
-            <p style="font-size: 14px; color: #555; margin: 8px 0 15px 0;">Запишіться на пробну сесію, де ми зможемо особисто обговорити вашу ситуацію, надати зворотний зв'язок та зрозуміти, чи буде коучинг ефективним саме для вас.</p>
+            <p style="margin: 0; font-weight: 600; color: var(--primary-color); font-size: 16px;">Бажаєте дослідити свій запит та відчути коучинг на практиці?</p>
+            <p style="font-size: 14px; color: #555; margin: 8px 0 15px 0;">Запишіться на діагностичну пробну сесію. Ми особисто розберемо вашу ситуацію, визначимо, чи буде коучинг ефективним саме для вас, та допоможемо правильно сформулювати запит.</p>
             <a href="#" class="cta-btn">Записатися на пробну сесію</a>
         </div>
 
@@ -339,24 +369,36 @@
 </div>
 
 <script>
+    // Автоматичне перемішування варіантів відповідей при кожному завантаженні
+    document.addEventListener("DOMContentLoaded", function() {
+        for (let i = 1; i <= 7; i++) {
+            const container = document.getElementById(`options-q${i}`);
+            if (container) {
+                for (let j = container.children.length; j > 0; j--) {
+                    container.appendChild(container.children[Math.floor(Math.random() * j)]);
+                }
+            }
+        }
+    });
+
     function nextStep(current) {
-        const selected = document.querySelector(`input[name="q${current}"]:checked`);
-        if (!selected) {
-            alert('Будь ласка, оберіть один із варіантів.');
+        const checked = document.querySelectorAll(`input[name="q${current}"]:checked`);
+        if (checked.length === 0) {
+            alert('Будь ласка, оберіть принаймні один варіант відповіді.');
             return;
         }
         document.querySelector(`.question-card[data-step="${current}"]`).classList.remove('active');
         document.querySelector(`.question-card[data-step="${current + 1}"]`).classList.add('active');
+        window.scrollTo({ top: 100, behavior: 'smooth' });
     }
 
     function calculateResults() {
-        const selected7 = document.querySelector('input[name="q7"]:checked');
-        if (!selected7) {
-            alert('Будь ласка, оберіть варіант у фінальному питанні.');
+        const checked7 = document.querySelectorAll('input[name="q7"]:checked');
+        if (checked7.length === 0) {
+            alert('Будь ласка, оберіть принаймні один варіант у фінальному питанні.');
             return;
         }
 
-        // Збір балів з урахуванням вагових коефіцієнтів
         const scores = {
             coaching: 0,
             therapy: 0,
@@ -367,19 +409,16 @@
         };
 
         for (let i = 1; i <= 7; i++) {
-            const el = document.querySelector(`input[name="q${i}"]:checked`);
-            if (el) {
+            const selected = document.querySelectorAll(`input[name="q${i}"]:checked`);
+            selected.forEach(el => {
                 let val = el.value;
-                // Правило безпеки: підвищена вага для психіатрії при виражених симптомах
-                let weight = (val === 'psychiatry') ? 2.5 : 1;
+                // Безпекова вага для психіатрії при критичних симптомах
+                let weight = (val === 'psychiatry') ? 2.0 : 1;
                 scores[val] += weight;
-            }
+            });
         }
 
-        // Правило безпеки: якщо є хоча б 2 бали на психіатрію — встановлюємо пріоритет безпеки
-        let psychiatryPriority = scores.psychiatry >= 2.0;
-
-        // Сортування результатів за балами
+        let psychiatryPriority = scores.psychiatry >= 4.0;
         let sortedFormats = Object.keys(scores).sort((a, b) => scores[b] - scores[a]);
         let topFormat = sortedFormats[0];
         let secondFormat = sortedFormats[1];
@@ -390,57 +429,104 @@
             contentHtml += `
                 <div class="result-block" style="border-left-color: #E65100; background: #FFF8E1;">
                     <h3 style="color: #E65100;">⚠️ Першочергова рекомендація: Психіатрія / Медична оцінка стану</h3>
-                    <p>Ваші відповіді вказують на суттєві зміни у самопочутті чи функціонуванні. У таких ситуаціях найважливішим першим кроком є консультація профільних медичних фахівців (психіатра або психотерапевта-медика), щоб отримати безпечну діагностику та стабілізувати стан. Лише після цього можуть бути ефективними інші формати роботи.</p>
+                    <p>Ваші відповіді вказують на суттєві зміни у самопочутті чи порушення повсякденного функціонування. У такій ситуації первинною є консультація лікаря-психіатра або психотерапевта-медика для діагностики та стабілізації стану.</p>
+                    
+                    <div class="coaching-adaptation-box">
+                        <h4>💡 Як тут може допомогти коучинг та як сформувати запит?</h4>
+                        <p><strong>Коли підключати коучинг:</strong> Після стабілізації стану лікарем або паралельно у формі підтримуючої адаптації до повсякденного життя.</p>
+                        <p><strong>Як сформулювати запит коучу:</strong> «Як мені адаптувати свій графік і звички під час відновлення?», «Як м'яко повернути відчуття контролю над повсякденними задачами?»</p>
+                        <p><strong>Результат від коучингу:</strong> Покроковий план адаптації, збереження ресурсу та вибудовування безпечних орієнтирів на майбутнє.</p>
+                    </div>
                 </div>
             `;
         }
 
-        // Опис результатів
-        const formatDescriptions = {
+        const formatInfo = {
             coaching: {
                 title: "Коучинг",
-                desc: "Фокусується на ваших цілях, розкритті внутрішнього потенціалу, пошуку рішень та переході від теперішнього стану (As Is) до бажаного (To Be) через партнерський діалог і запитання."
+                desc: "Ваш запит націлений на теперішнє та майбутнє, прийняття власних рішень, пошук мотивації та перехід від бажань до конкретних дій.",
+                coachingAdvice: null
             },
             therapy: {
-                title: "Психотерапія",
-                desc: "Спрямована на опрацювання глибоких емоційних переживань, травматичного досвіду, тривожних станів та розуміння внутрішніх психологічних механізмів."
-            },
-            psychiatry: {
-                title: "Психіатрія / Медична допомога",
-                desc: "Забезпечує професійну діагностику стану здоров'я, визначення фізіологічних причин симптомів та призначення медикаментозної підтримки у разі потреби."
+                title: "Психотерапія / Психологічне консультування",
+                desc: "Ваш запит пов'язаний з опрацюванням емоційного болю, страхів, тривог або болісного минулого досвіду, який заважає жити зараз.",
+                coachingAdvice: {
+                    when: "Після того як болючі емоційні реакції будуть опрацьовані з психологом, або паралельно (якщо ви вже відчуваєте ресурс діяти).",
+                    request: "«Я вже розумію причини моїх страхів, а тепер хочу навчитися вибудовувати нову поведінку і рухатися до цілей», «Як мені створити опору на свої цінності у нових стосунках/роботі?»",
+                    result: "Вифокусування з минулого на майбутнє, вибудовування власної стратегії дій та зміцнення самооцінки через конкретні кроки."
+                }
             },
             mentoring: {
-                title: "Менторство",
-                desc: "Передбачає передачу практичного досвіду, знань та орієнтирів від людини, яка вже пройшла схожий шлях і досягла успіху у вашій сфері."
+                title: "Менторство / Наставництво",
+                desc: "Вам потрібна людина з конкретної сфери, яка вже пройшла свій шлях і може дати підказки та поради зі власного досвіду.",
+                coachingAdvice: {
+                    when: "Коли ви не хочете копіювати чужий досвід, а прагнете знайти свій унікальний стиль та рішення.",
+                    request: "«Ментор дав мені варіанти, але яке з цих рішень відповідає моїм особистим цінностям?», «Як мені подолати синдром самозванця і реалізувати свій потенціал?»",
+                    result: "Розуміння власних відповідей замість сліпого слідування порадам, впевненість у власному виборі."
+                }
             },
             consulting: {
-                title: "Консультування",
-                desc: "Націлене на експертний аналіз конкретної проблеми, пошук причин та надання чітких, обґрунтованих рекомендацій чи готових бізнес-рішень."
+                title: "Консультування (Експертне)",
+                desc: "Вам потрібен готовий аналіз проблеми та експертні рекомендації (юридичні, фінансові, маркетингові тощо).",
+                coachingAdvice: {
+                    when: "Коли рішення або аудит від консультанта вже є, але у вас є опір чи невизначеність щодо його впровадження.",
+                    request: "«Я маю готовий план від консультантів, але що заважає мені почати його реалізовувати?», «Як мені як керівнику організувати команду під цей проєкт?»",
+                    result: "Перехід від паперів і порад до реальних дій, подолання саботажу та організації системного руху."
+                }
             },
             training: {
-                title: "Тренерство",
-                desc: "Фокусується на засвоєнні конкретних навичок, регулярній практиці, виконанні вправ та отриманні зворотного зв'язку для покращення результатів."
+                title: "Тренерство / Навчання",
+                desc: "Вам потрібно опанувати конкретну навичку, пройти вправи та відпрацювати алгоритм за програмою.",
+                coachingAdvice: {
+                    when: "Коли знання та навички вже є, але бракує дисципліни, сили волі або системи для їх постійного застосування.",
+                    request: "«Я вже все знаю теорію, але як мені вбудувати цю навичку в своє реальне життя?», «Як сформувати стійку звичку без насилля над собою?»",
+                    result: "Інтеграція навичок у життя на рівні внутрішньої мотивації, а не тимчасового змушування."
+                }
             }
         };
 
-        // Головний результат
-        let primary = psychiatryPriority && topFormat !== 'psychiatry' ? 'psychiatry' : topFormat;
-        
-        contentHtml += `
-            <div class="result-block">
-                <h3>Основний відповідний формат: ${formatDescriptions[primary].title}</h3>
-                <p>${formatDescriptions[primary].desc}</p>
-            </div>
-        `;
+        let primary = (psychiatryPriority && topFormat !== 'psychiatry') ? 'psychiatry' : topFormat;
 
-        // Перевірка сумісності (якщо другий формат має близькі бали — показуємо комбінацію)
-        if (scores[secondFormat] >= 3 && secondFormat !== primary && !psychiatryPriority) {
+        if (!psychiatryPriority) {
             contentHtml += `
-                <div class="result-block" style="border-left-color: #689F38;">
-                    <h3>💡 Можлива комбінація форматів: ${formatDescriptions[primary].title} + ${formatDescriptions[secondFormat].title}</h3>
-                    <p>Ваші відповіді показують перетин потреб. Наприклад, поєднання <strong>${formatDescriptions[primary].title.toLowerCase()}</strong> та <strong>${formatDescriptions[secondFormat].title.toLowerCase()}</strong> може дати синергійний ефект: поки один формат вирішує одні завдання (наприклад, внутрішні бар'єри чи емоції), інший структурує навички або бізнес-стратегію.</p>
-                </div>
+                <div class="result-block">
+                    <h3>Основний відповідний формат: ${formatInfo[primary].title}</h3>
+                    <p>${formatInfo[primary].desc}</p>
             `;
+
+            // Якщо основний результат НЕ коучинг — додаємо секцію "Як це перетворити на коучинг"
+            if (primary !== 'coaching' && formatInfo[primary].coachingAdvice) {
+                const adv = formatInfo[primary].coachingAdvice;
+                contentHtml += `
+                    <div class="coaching-adaptation-box">
+                        <h4>💡 Що з цим запитом може дати Коучинг і як його сформулювати?</h4>
+                        <p><strong>Коли доцільно задіяти коучинг:</strong> ${adv.when}</p>
+                        <p><strong>Як сформулювати запит до коуча:</strong> ${adv.request}</p>
+                        <p><strong>Результат роботи з коучем:</strong> ${adv.result}</p>
+                    </div>
+                `;
+            } else if (primary === 'coaching') {
+                contentHtml += `
+                    <div class="coaching-adaptation-box" style="border-style: solid; background: var(--accent-green);">
+                        <h4>✨ Що саме вам дасть коучинг:</h4>
+                        <p>• Чітке розуміння своїх справжніх прагнень та подолання невизначеності.</p>
+                        <p>• Трансформацію від «треба» до «я хочу і знаю як».</p>
+                        <p>• Формування власного плану дій з опорою на ваші сили та цінності.</p>
+                    </div>
+                `;
+            }
+
+            contentHtml += `</div>`;
+
+            // Перевірка сумісності (якщо є другий сильний формат)
+            if (scores[secondFormat] >= 3 && secondFormat !== primary) {
+                contentHtml += `
+                    <div class="result-block" style="border-left-color: #689F38;">
+                        <h3>💡 Доцільне поєднання: ${formatInfo[primary].title} + ${formatInfo[secondFormat].title}</h3>
+                        <p>Ваші відповіді показують комплексну потребу. Часто найбільш ефективним є послідовний або паралельний підхід: один інструмент закриває експертну чи емоційну частину, а інший — допомагає діяти та досягати цілей.</p>
+                    </div>
+                `;
+            }
         }
 
         document.getElementById('quiz-form').style.display = 'none';
@@ -451,9 +537,7 @@
     function restartQuiz() {
         document.getElementById('results-screen').style.display = 'none';
         document.getElementById('quiz-form').style.display = 'block';
-        // Очистити радіокнопки
-        document.querySelectorAll('input[type="radio"]').forEach(el => el.checked = false);
-        // Повернути перше питання
+        document.querySelectorAll('input[type="checkbox"]').forEach(el => el.checked = false);
         document.querySelectorAll('.question-card').forEach(card => card.classList.remove('active'));
         document.querySelector('.question-card[data-step="1"]').classList.add('active');
         window.scrollTo({ top: 0, behavior: 'smooth' });
